@@ -1,0 +1,37 @@
+import java.util.Scanner;
+public class happy{
+public static void main(String[]args){
+Scanner sc=new Scanner(System.in);
+int n=sc.nextInt();
+int m1=sc.nextInt();
+int m2=sc.nextInt();
+int hcount=0;
+int ccount=0;
+int hccount=0;
+for(int i=1;i<n;i++){
+ if(i%m1==0 && i%m2!=0){
+     System.out.print("Happy");
+      hcount++;
+}
+if(i%m2==0 && i%m1!=0){
+   System.out.print("Coding");
+   ccount++;
+}
+if(i%m1==0 && i%m2==0){
+System.out.print("HappyCoding");
+hccount++;
+}
+if(i%m1==0){
+ continue;
+}
+if(i%m2==0){
+continue;
+}
+System.out.print(i+" ");
+}
+System.out.println();
+System.out.println("Happy - "+hcount);
+System.out.println("Coding - "+ccount);
+System.out.println("HappyCoding - "+hccount);
+}
+}
