@@ -8,7 +8,7 @@ int m2=sc.nextInt();
 int hcount=0;
 int ccount=0;
 int hccount=0;
-for(int i=1;i<n;i++){
+for(int i=1;i<=n;i++){
  if(i%m1==0 && i%m2!=0){
      System.out.print("Happy");
       hcount++;
