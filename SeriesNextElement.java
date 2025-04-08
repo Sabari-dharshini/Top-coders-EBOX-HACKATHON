@@ -1,49 +1,34 @@
-import java.util.Scanner;
+import java.util.*;
+class Main{
 
-public class SeriesNextElement {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String a = sc.nextLine();
-
-        String[] parts = a.split(",");
-        int[] s = new int[parts.length];
-        for (int i = 0; i < parts.length; i++) {
-            s[i] = Integer.parseInt(parts[i].trim());
-        }
-
-        int diff = s[1] - s[0];
-        boolean Arithmetic = true;
-
-        for (int i = 2; i < s.length; i++) {
-            int currentDiff = s[i] - s[i - 1];
-            if (currentDiff == diff) {
-            } else {
-                Arithmetic = false;
+        public static void main(String[] args){
+            Scanner sc=new Scanner(System.in);
+            String s=sc.next();
+            String[] parts=s.split(",");
+            
+            int n=parts.length;
+            int a[]=new int [n];
+            for (int i = 0; i < n; i++) {
+                a[i] = Integer.parseInt(parts[i]);
             }
-        }
-        if (Arithmetic == true) {
-            int next = s[s.length - 1] + diff;
-            System.out.println(next);
-            return;
-        }
-        boolean Geometric = true;
-        int ratio = s[1] / s[0];
+            boolean AP=(a[1]-a[0]==a[2]-a[1]);
+            boolean GP=(a[1]/a[0]==a[2]/a[1]);
+            if(AP){
+                int r=a[1]-a[0];
 
-        for (int i = 2; i < s.length; i++) {
-            int currentRatio = s[i] / s[i - 1];
-            int remainder = s[i] % s[i - 1];
+                int res=a[n-1]+r;
 
-            if (currentRatio == ratio && remainder == 0) {
-            } else {
-                Geometric = false;
+                System.out.println(res);
+            }else if(GP){
+                int r=a[1]/a[0];
+
+                int res=a[n-1]*r;
+
+                System.out.println(res);
+            }else{
+                System.out.println("Neither AP nor GP");
             }
-        }
 
-        if (Geometric == true) {
-            int next = s[s.length - 1] * ratio;
-            System.out.println(next);
-            return;
-        }
-        System.out.println("Invalid or unsupported series");
-    }
-}
+
+        }}
+
